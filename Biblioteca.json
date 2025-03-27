@@ -1,0 +1,24 @@
+{
+  "materiales": {
+    "1": {
+      "autor": "asdfdda",
+      "numPaginas": 2,
+      "prestado": false,
+      "id": 1,
+      "nombre": "fda",
+      "descripcion": "afdfasdfasd"
+    }
+  },
+  "libros": [
+    {
+      "autor": "asdfdda",
+      "numPaginas": 2,
+      "prestado": false,
+      "id": 1,
+      "nombre": "fda",
+      "descripcion": "afdfasdfasd"
+    }
+  ],
+  "Dvd": [],
+  "revistas": []
+}
