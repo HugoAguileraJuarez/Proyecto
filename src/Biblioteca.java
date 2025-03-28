@@ -75,7 +75,19 @@ public class Biblioteca {
 
     //  Eliminar un elemento
     public boolean eliminarMaterial(int id) {
-
+        String clave = String.valueOf(id);
+        Materiales objecto = null;
+        if (materiales.containsKey(clave)){
+            objecto = materiales.remove(clave);
+            if (objecto instanceof Libro) {
+                libros.remove(objecto);
+            } else if (objecto instanceof DVD) {
+                Dvd.remove(objecto);
+            } else if (objecto instanceof Revista) {
+                revistas.remove(objecto);
+            }
+            return true;
+        }
         return  false;
     }
 
