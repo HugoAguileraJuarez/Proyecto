@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class Biblioteca {
     //  Creacion de HashMap y ArrayList
-    HashMap<String, Materiales> materiales = new HashMap<>();
+    HashMap<String, Object> materiales = new HashMap<>(); //Ultima modificacion y da error
     ArrayList<Libro> libros = new ArrayList<>();
     ArrayList<DVD> Dvd = new ArrayList<>();
     ArrayList<Revista> revistas = new ArrayList<>();
@@ -11,17 +11,17 @@ public class Biblioteca {
     //  Coleciones
     public ArrayList<Materiales> mostarBiblio(){
         ArrayList<Materiales> lista = new ArrayList<>();
-        for (Materiales entrada : materiales.values()){
-            lista.add(entrada);
+        for (Object entrada : materiales.values()){
+            lista.add((Materiales) entrada);
         }
         return lista;
     }
 
     public ArrayList<Materiales> buscarTitulo(String titulo){
         ArrayList<Materiales> lista = new ArrayList<>();
-        for (Materiales entrada: materiales.values()){
-            if (titulo.contains(entrada.getNombre())){
-                lista.add(entrada);
+        for (Object entrada: materiales.values()){
+            if (titulo.contains(((Materiales)entrada).getNombre())){
+                lista.add((Materiales) entrada);
             }
         }
         return lista;
@@ -29,9 +29,10 @@ public class Biblioteca {
 
     //Hacer metodo para mostrar por elemento
 
+
     public ArrayList<Materiales> mostrarPrestados(){
         ArrayList<Materiales> lista = new ArrayList<>();
-        for (Materiales entrada: materiales.values()){
+        for (Object entrada:  materiales.values()){
             if (entrada instanceof Libro) {
                 Libro libro = (Libro) entrada;
                 if (libro.getPrestado()){
@@ -70,7 +71,12 @@ public class Biblioteca {
 
     // Buscar un elemento
     public Materiales buscar(int id){
-        return materiales.get(id);
+        for (Object entrada: materiales.values()){
+            if (((Materiales)entrada).getId() == id){
+                return (Materiales) entrada;
+            }
+        }
+        return null;
     }
 
     //  Eliminar un elemento
@@ -78,7 +84,7 @@ public class Biblioteca {
         String clave = String.valueOf(id);
         Materiales objecto = null;
         if (materiales.containsKey(clave)){
-            objecto = materiales.remove(clave);
+            objecto = (Materiales) materiales.remove(clave);
             if (objecto instanceof Libro) {
                 libros.remove(objecto);
             } else if (objecto instanceof DVD) {
