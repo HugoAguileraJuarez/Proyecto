@@ -51,7 +51,6 @@ public class Menu {
 
 
     public static void main(String[] args) {
-
         Biblioteca biblioteca = leerJSON();
         if (biblioteca == null) {
             System.out.println("No se pudo leer el archivo JSON. Se creará una nueva biblioteca.");
@@ -81,7 +80,7 @@ public class Menu {
                             "\n\t3. DVD");
 
                     int tipoMaterial = teclado.nextInt();
-                    teclado.nextLine(); // Consumir el salto de línea
+                    teclado.nextLine();
 
                     if (tipoMaterial == 1) {
                         System.out.println("Ingrese el título del libro:");
@@ -137,12 +136,10 @@ public class Menu {
                         System.out.println("¿Desea eliminar este material? \n\t" + material.getDetalles() + "\n(Escriba 'si' para confirmar)");
                         String pregunta = teclado.nextLine();
 
-                        if (pregunta.equalsIgnoreCase("si")) {
+                        if (pregunta.contains("si")) {
                             boolean eliminado = biblioteca.eliminarMaterial(id);
                             if (eliminado) {
                                 System.out.println("Material eliminado con éxito.");
-                            } else {
-                                System.out.println("No se pudo eliminar el material.");
                             }
                         } else {
                             System.out.println("Operación cancelada.");
@@ -153,7 +150,7 @@ public class Menu {
 
                 case 3:
                     System.out.println("Materiales en la biblioteca:");
-                    if (biblioteca.mostarBiblio() == null || biblioteca.mostarBiblio().isEmpty()) {
+                    if (biblioteca.mostarBiblio() == null) {
                         System.out.println("La biblioteca está vacía.");
                     } else {
                         for (Materiales entrada : biblioteca.mostarBiblio()) {
@@ -163,6 +160,7 @@ public class Menu {
                     break;
 
                 case 4:
+
                     break;
 
                 case 5:
@@ -172,7 +170,7 @@ public class Menu {
                     break;
 
                 case 7:
-                    System.out.println("Saliendo del programa...");
+                    System.out.println("Saliendo del programa");
                     salir = true;
                     break;
 
