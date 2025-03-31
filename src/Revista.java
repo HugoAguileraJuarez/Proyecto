@@ -15,9 +15,8 @@ public class Revista extends Materiales {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + "Revista{" +
-                "editorial='" + editorial + '\'' +
-                '}';
+    public String getDetalles() {
+        return "Id: "+ getId()+ "Revista: "+ getNombre() + "Editorial :" + editorial;
+
     }
 }

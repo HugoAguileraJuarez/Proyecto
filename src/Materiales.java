@@ -32,12 +32,6 @@ public abstract class Materiales {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "Materiales{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                '}';
-    }
+    public abstract String getDetalles();
+
 }

@@ -44,10 +44,8 @@ public class DVD extends Materiales implements Prestable{
     }
 
     @Override
-    public String toString() {
-        return super.toString() + "DVD{" +
-                "contenido='" + contenido + '\'' +
-                ", prestado=" + prestado +
-                '}';
+    public String getDetalles(){
+        return "Id: "+ getId()+ "DVD: "+ getNombre() + "Contenido :" + contenido + ", Prestado: " + prestado;
+
     }
 }

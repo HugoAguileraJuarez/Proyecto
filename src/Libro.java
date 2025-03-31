@@ -55,12 +55,9 @@ public class Libro extends Materiales implements Prestable{
         return false;
     }
 
+
     @Override
-    public String toString() {
-        return super.toString() + "Libro{" +
-                "autor='" + autor + '\'' +
-                ", numPaginas=" + numPaginas +
-                ", prestado=" + prestado +
-                '}';
+    public String getDetalles() {
+        return "Id ="+ getId()+ ", Libro = "+ getNombre() + ", Autor = " + autor + ", Numero de paginas :=" + numPaginas + ", Prestado: " + prestado;
     }
 }

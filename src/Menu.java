@@ -3,24 +3,42 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.TypeAdapterFactory;
 
 public class Menu {
     private static final String RUTA_ARCHIVO = "Biblioteca.json";
 
     public static Biblioteca leerJSON() {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapterFactory(
+                        RuntimeTypeAdapterFactory.of(Materiales.class, "type")
+                                .registerSubtype(Libro.class, "Libro")
+                                .registerSubtype(Revista.class, "Revista")
+                                .registerSubtype(DVD.class, "DVD")
+                )
+                .create();
+
         Biblioteca biblio = null;
         try (FileReader reader = new FileReader(RUTA_ARCHIVO)) {
             biblio = gson.fromJson(reader, Biblioteca.class);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            return biblio;
         }
+        return biblio;
     }
 
     public static void escribirJSON(Biblioteca biblioteca) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapterFactory(
+                        RuntimeTypeAdapterFactory.of(Materiales.class, "type")
+                                .registerSubtype(Libro.class, "Libro")
+                                .registerSubtype(Revista.class, "Revista")
+                                .registerSubtype(DVD.class, "DVD")
+                )
+                .setPrettyPrinting()  // Opcional, para un JSON formateado
+                .create();
+
         String json = gson.toJson(biblioteca);
         try (FileWriter writer = new FileWriter(RUTA_ARCHIVO)) {
             writer.write(json);
@@ -29,6 +47,8 @@ public class Menu {
             e.printStackTrace();
         }
     }
+
+
 
     public static void main(String[] args) {
 
@@ -89,7 +109,15 @@ public class Menu {
 
                         biblioteca.addRevistao(nom, desc, edito);
                     } else if (tipoMaterial == 3) {
-                        System.out.println("Inserción de DVD aún no implementada.");
+                        System.out.println("Ingrese el nombre del DVD:");
+                        String nom = teclado.nextLine();
+
+                        System.out.println("Ingrese una breve descripción del DVD:");
+                        String desc = teclado.nextLine();
+
+                        System.out.println("Ingrese el tipo de tenido del DVD:");
+                        String contenido = teclado.nextLine();
+                        biblioteca.addDVD(nom, desc, contenido);
                     } else {
                         System.out.println("Error: opción inválida.");
                     }
@@ -106,7 +134,7 @@ public class Menu {
                     if (material == null) {
                         System.out.println("El material con ID " + id + " no existe.");
                     } else {
-                        System.out.println("¿Desea eliminar este material? \n\t" + material + "\n(Escriba 'si' para confirmar)");
+                        System.out.println("¿Desea eliminar este material? \n\t" + material.getDetalles() + "\n(Escriba 'si' para confirmar)");
                         String pregunta = teclado.nextLine();
 
                         if (pregunta.equalsIgnoreCase("si")) {
@@ -129,7 +157,7 @@ public class Menu {
                         System.out.println("La biblioteca está vacía.");
                     } else {
                         for (Materiales entrada : biblioteca.mostarBiblio()) {
-                            System.out.println(entrada);
+                            System.out.println(entrada.getDetalles());
                         }
                     }
                     break;

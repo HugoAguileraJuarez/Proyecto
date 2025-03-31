@@ -3,25 +3,25 @@ import java.util.HashMap;
 
 public class Biblioteca {
     //  Creacion de HashMap y ArrayList
-    HashMap<String, Materiales> materiales = new HashMap<>();
-    ArrayList<Libro> libros = new ArrayList<>();
-    ArrayList<DVD> Dvd = new ArrayList<>();
-    ArrayList<Revista> revistas = new ArrayList<>();
+    private HashMap<String, Materiales> materiales = new HashMap<>();
+    private transient ArrayList<Libro> libros = new ArrayList<>();
+    private transient ArrayList<DVD> Dvd = new ArrayList<>();
+    private transient ArrayList<Revista> revistas = new ArrayList<>();
 
     //  Coleciones
     public ArrayList<Materiales> mostarBiblio(){
         ArrayList<Materiales> lista = new ArrayList<>();
-        for (Materiales entrada : materiales.values()){
-            lista.add(entrada);
+        for (Object entrada : materiales.values()){
+            lista.add((Materiales) entrada);
         }
         return lista;
     }
 
     public ArrayList<Materiales> buscarTitulo(String titulo){
         ArrayList<Materiales> lista = new ArrayList<>();
-        for (Materiales entrada: materiales.values()){
-            if (titulo.contains(entrada.getNombre())){
-                lista.add(entrada);
+        for (Object entrada: materiales.values()){
+            if (((Materiales)entrada).getNombre().toLowerCase().contains(titulo.toLowerCase())){
+                lista.add((Materiales) entrada);
             }
         }
         return lista;
@@ -29,9 +29,10 @@ public class Biblioteca {
 
     //Hacer metodo para mostrar por elemento
 
+
     public ArrayList<Materiales> mostrarPrestados(){
         ArrayList<Materiales> lista = new ArrayList<>();
-        for (Materiales entrada: materiales.values()){
+        for (Object entrada:  materiales.values()){
             if (entrada instanceof Libro) {
                 Libro libro = (Libro) entrada;
                 if (libro.getPrestado()){
@@ -49,7 +50,6 @@ public class Biblioteca {
 
 
     //  Parte del menu
-
     //  Añadir elemento
     public void addLibro(String nom, String aut, String desc, int numP) {
         Libro libro = new Libro(nom, desc, aut, numP);
@@ -66,11 +66,17 @@ public class Biblioteca {
     public void addDVD(String nom, String desc, String cont){
         DVD dvd = new DVD(nom,desc,cont);
         Dvd.add(dvd);
+        materiales.put(String.valueOf(dvd.getId()), dvd);
     }
 
     // Buscar un elemento
     public Materiales buscar(int id){
-        return materiales.get(id);
+        for (Object entrada: materiales.values()){
+            if (((Materiales)entrada).getId() == id){
+                return (Materiales) entrada;
+            }
+        }
+        return null;
     }
 
     //  Eliminar un elemento
@@ -78,7 +84,7 @@ public class Biblioteca {
         String clave = String.valueOf(id);
         Materiales objecto = null;
         if (materiales.containsKey(clave)){
-            objecto = materiales.remove(clave);
+            objecto = (Materiales) materiales.remove(clave);
             if (objecto instanceof Libro) {
                 libros.remove(objecto);
             } else if (objecto instanceof DVD) {
@@ -90,11 +96,6 @@ public class Biblioteca {
         }
         return  false;
     }
-
-
-
-
-
 
 }
 

@@ -1,24 +1,28 @@
 {
   "materiales": {
     "1": {
-      "autor": "asdfdda",
-      "numPaginas": 2,
+      "contenido": "b",
       "prestado": false,
       "id": 1,
-      "nombre": "fda",
-      "descripcion": "afdfasdfasd"
-    }
-  },
-  "libros": [
-    {
-      "autor": "asdfdda",
-      "numPaginas": 2,
+      "nombre": "b",
+      "descripcion": "b",
+      "type": "DVD"
+    },
+    "2": {
+      "autor": "a",
+      "numPaginas": 1,
       "prestado": false,
-      "id": 1,
-      "nombre": "fda",
-      "descripcion": "afdfasdfasd"
+      "id": 2,
+      "nombre": "a",
+      "descripcion": "a",
+      "type": "Libro"
+    },
+    "3": {
+      "editorial": "d",
+      "id": 3,
+      "nombre": "d",
+      "descripcion": "d",
+      "type": "Revista"
     }
-  ],
-  "Dvd": [],
-  "revistas": []
+  }
 }
