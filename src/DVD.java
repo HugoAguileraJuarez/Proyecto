@@ -45,7 +45,7 @@ public class DVD extends Materiales implements Prestable{
 
     @Override
     public String getDetalles(){
-        return "Id: "+ getId()+ "DVD: "+ getNombre() + "Contenido :" + contenido + ", Prestado: " + prestado;
+        return "Id: "+ getId()+ ", DVD: "+ getNombre() + ", Contenido :" + contenido + ", Prestado: " + prestado;
 
     }
 }

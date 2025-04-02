@@ -17,36 +17,18 @@ public class Biblioteca {
         return lista;
     }
 
-    public ArrayList<Materiales> buscarTitulo(String titulo){
-        ArrayList<Materiales> lista = new ArrayList<>();
-        for (Object entrada: materiales.values()){
-            if (((Materiales)entrada).getNombre().toLowerCase().contains(titulo.toLowerCase())){
-                lista.add((Materiales) entrada);
+    public Materiales buscarTitulo(String titulo){
+        for (Materiales entrada: materiales.values()){
+            if (entrada.getNombre().toLowerCase().contains(titulo.toLowerCase())){
+                return entrada;
             }
         }
-        return lista;
+        return null;
     }
 
-    //Hacer metodo para mostrar por elemento
+    //Hacer metodo para buscar por type de material
 
 
-    public ArrayList<Materiales> mostrarPrestados(){
-        ArrayList<Materiales> lista = new ArrayList<>();
-        for (Object entrada:  materiales.values()){
-            if (entrada instanceof Libro) {
-                Libro libro = (Libro) entrada;
-                if (libro.getPrestado()){
-                    lista.add(libro);
-                }
-            }else if (entrada instanceof DVD){
-                DVD dvd = (DVD) entrada;
-                if (dvd.getPrestado()){
-                    lista.add(dvd);
-                }
-            }
-        }
-        return lista;
-    }
 
 
     //  Parte del menu
@@ -79,6 +61,13 @@ public class Biblioteca {
         return null;
     }
 
+    //Buscar por tipo
+    public Materiales buscarTipo(){
+        return null;
+    }
+
+
+
     //  Eliminar un elemento
     public boolean eliminarMaterial(int id) {
         String clave = String.valueOf(id);
@@ -96,6 +85,51 @@ public class Biblioteca {
         }
         return  false;
     }
+
+
+    public boolean alquilar(int id){
+        ArrayList<Materiales> lista = new ArrayList<>();
+        for (Materiales entrada: materiales.values()){
+            if ((entrada).getId() == id){
+                if (entrada instanceof Libro) {
+                    Libro libro = (Libro) entrada;
+                    if (libro.alquilar()){
+                        lista.add(libro);
+                        return true;
+                    }
+                }else if (entrada instanceof DVD){
+                    DVD dvd = (DVD) entrada;
+                    if (dvd.alquilar()){
+                        lista.add(dvd);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean devolver(int id){
+        for (Materiales entrada: materiales.values()){
+            if (entrada.getId() == id){
+                if (entrada instanceof Libro){
+                    Libro libro = (Libro) entrada;
+                    if (libro.devuelto()){
+                        return true;
+                    }
+                }else if (entrada instanceof DVD){
+                    DVD dvd = (DVD) entrada;
+                    if (dvd.devuelto()){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+
 
 }
 

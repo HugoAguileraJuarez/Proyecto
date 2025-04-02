@@ -16,7 +16,7 @@ public class Revista extends Materiales {
 
     @Override
     public String getDetalles() {
-        return "Id: "+ getId()+ "Revista: "+ getNombre() + "Editorial :" + editorial;
+        return "Id: "+ getId()+ ", Revista: "+ getNombre() + ", Editorial :" + editorial;
 
     }
 }

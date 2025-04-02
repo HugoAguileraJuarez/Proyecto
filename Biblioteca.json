@@ -1,28 +1,37 @@
 {
   "materiales": {
     "1": {
-      "contenido": "b",
+      "autor": "tori",
+      "numPaginas": 4312,
       "prestado": false,
       "id": 1,
-      "nombre": "b",
-      "descripcion": "b",
-      "type": "DVD"
+      "nombre": "berser",
+      "descripcion": "cosas edgy",
+      "type": "Libro"
     },
     "2": {
-      "autor": "a",
-      "numPaginas": 1,
+      "autor": "akira",
+      "numPaginas": 1234,
       "prestado": false,
       "id": 2,
-      "nombre": "a",
-      "descripcion": "a",
+      "nombre": "dragon boll",
+      "descripcion": "goku x veguetta",
       "type": "Libro"
     },
     "3": {
-      "editorial": "d",
+      "editorial": "marca",
       "id": 3,
-      "nombre": "d",
-      "descripcion": "d",
+      "nombre": "marca",
+      "descripcion": "cosas de marca",
       "type": "Revista"
+    },
+    "4": {
+      "contenido": "Batman",
+      "prestado": false,
+      "id": 4,
+      "nombre": "Batman",
+      "descripcion": "el señor de la noche",
+      "type": "DVD"
     }
   }
 }

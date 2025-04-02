@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.TypeAdapterFactory;
 
+//cosas que preguntar: seguir usando object en los metodos de la bibliteca
 public class Menu {
     private static final String RUTA_ARCHIVO = "Biblioteca.json";
 
@@ -22,11 +22,17 @@ public class Menu {
         Biblioteca biblio = null;
         try (FileReader reader = new FileReader(RUTA_ARCHIVO)) {
             biblio = gson.fromJson(reader, Biblioteca.class);
+            if (biblio == null) {
+                System.out.println("Archivo JSON vacío, creando nueva biblioteca...");
+                biblio = new Biblioteca();
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("No se pudo leer el archivo JSON, creando nueva biblioteca...");
+            biblio = new Biblioteca();
         }
         return biblio;
     }
+
 
     public static void escribirJSON(Biblioteca biblioteca) {
         Gson gson = new GsonBuilder()
@@ -36,26 +42,21 @@ public class Menu {
                                 .registerSubtype(Revista.class, "Revista")
                                 .registerSubtype(DVD.class, "DVD")
                 )
-                .setPrettyPrinting()  // Opcional, para un JSON formateado
+                .setPrettyPrinting()
                 .create();
 
-        String json = gson.toJson(biblioteca);
         try (FileWriter writer = new FileWriter(RUTA_ARCHIVO)) {
-            writer.write(json);
-            System.out.println("JSON guardado y asegurado");
+            gson.toJson(biblioteca, writer);
+            System.out.println("JSON guardado correctamente.");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error al guardar el JSON: " + e.getMessage());
         }
     }
 
 
-
     public static void main(String[] args) {
         Biblioteca biblioteca = leerJSON();
-        if (biblioteca == null) {
-            System.out.println("No se pudo leer el archivo JSON. Se creará una nueva biblioteca.");
-            biblioteca = new Biblioteca();
-        }
+
         Scanner teclado = new Scanner(System.in);
         boolean salir = false;
 
@@ -64,7 +65,7 @@ public class Menu {
                     "\n\t1. Insertar un nuevo material" +
                     "\n\t2. Eliminar un material" +
                     "\n\t3. Mostrar lista de materiales" +
-                    "\n\t4. Buscar información de un material" +
+                    "\n\t4. Buscar un material" +
                     "\n\t5. Alquilar" +
                     "\n\t6. Devolver" +
                     "\n\t7. Salir");
@@ -160,13 +161,37 @@ public class Menu {
                     break;
 
                 case 4:
+                    System.out.println("Selecione el tipo de busqueda:" +
+                            "\n\t1. Por id" +
+                            "\n\t2. Por titulo o nombre" +
+                            "\n\t3. Por tipo" );
+                    seleccion = teclado.nextInt();
+                    teclado.nextLine();
+                    if (seleccion == 1){
+                        System.out.println("Ingrese la ID del material:");
+                        id = teclado.nextInt();
+                        System.out.println(biblioteca.buscar(id).getDetalles());
 
+                    }else if(seleccion == 2){
+                        System.out.println("Ingrese el titulo o nombre del material: ");
+                        String nom = teclado.nextLine();
+                        System.out.println(biblioteca.buscarTitulo(nom).getDetalles());
+                    }else if (seleccion == 3){
+                        System.out.println("Ingrese el tipo de material que quieres buscar");
+
+                    };
                     break;
 
                 case 5:
+                    System.out.println("Ingrese la ID del material que deseas alquilar:");
+                    id = teclado.nextInt();
+                    System.out.println(biblioteca.alquilar(id));
                     break;
 
                 case 6:
+                    System.out.println("Ingrese la ID del material que deseas devolver:");
+                    id = teclado.nextInt();
+                    System.out.println(biblioteca.devolver(id));
                     break;
 
                 case 7:
