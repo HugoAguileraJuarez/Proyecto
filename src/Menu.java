@@ -142,12 +142,12 @@ public class Menu {
                             boolean eliminado = biblioteca.eliminarMaterial(id);
                             if (eliminado) {
                                 System.out.println("Material eliminado con éxito.");
+                                escribirJSON(biblioteca);
                             }
                         } else {
                             System.out.println("Operación cancelada.");
                         }
                     }
-                    escribirJSON(biblioteca);
                     break;
 
                 case 3:
@@ -222,3 +222,8 @@ public class Menu {
         }
     }
 }
+
+// comprobar si se pueden añadir algo ya esta metido
+// mirar si me renta cambiar los valores de la biblioteca de manera que no devuelvan nada pero si hay un fallo usar el try chach
+// la opcion 4 de buscar por especifiacion los dos primeros petan y el tercero se la suda asi que tocara usar ahi el try cach entonces
+//
