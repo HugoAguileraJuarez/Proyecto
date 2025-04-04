@@ -3,7 +3,7 @@
     "1": {
       "autor": "Kentaro",
       "numPaginas": 43124,
-      "prestado": false,
+      "prestado": true,
       "id": 1,
       "nombre": "Berserk",
       "descripcion": "Libro de edad media fantasia y horror",

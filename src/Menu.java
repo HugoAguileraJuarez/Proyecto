@@ -179,7 +179,10 @@ public class Menu {
                         System.out.println(biblioteca.buscarTitulo(nom).getDetalles());
                     }else if (seleccion == 3){
                         System.out.println("Ingrese el tipo de material que quieres buscar");
-
+                        String nom = teclado.nextLine();
+                        for (Materiales entrada: biblioteca.buscarTipo(nom)){
+                            System.out.println(entrada.getDetalles());
+                        }
                     };
                     break;
 
@@ -187,17 +190,19 @@ public class Menu {
                     System.out.println("Ingrese la ID del material que deseas alquilar:");
                     id = teclado.nextInt();
                     System.out.println(biblioteca.alquilar(id));
+                    escribirJSON(biblioteca);
                     break;
 
                 case 6:
                     System.out.println("Ingrese la ID del material que deseas devolver:");
                     id = teclado.nextInt();
                     System.out.println(biblioteca.devolver(id));
+                    escribirJSON(biblioteca);
                     break;
 
                 case 7:
                     System.out.println("Aqui estan todos los materiales alquilados");
-                    if (biblioteca.alquilados() == null){
+                        if (biblioteca.alquilados().isEmpty()){
                         System.out.println("Actualmente no hay ningun material alquilado.");
                     }else {
                         for (Materiales entrada : biblioteca.alquilados()) {

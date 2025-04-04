@@ -27,10 +27,30 @@ public class Biblioteca {
         return null;
     }
 
-    //Hacer metodo para buscar por type de material
-    public Materiales buscarTipo(){
-
-        return null;
+    public ArrayList<Materiales> buscarTipo(String nom){
+        ArrayList<Materiales> resultado = new ArrayList<>();
+        for (Materiales material : materiales.values()) {
+            switch (nom.toLowerCase()) {
+                case "dvd":
+                    if (material instanceof DVD) {
+                        resultado.add(material);
+                    }
+                    break;
+                case "libro":
+                    if (material instanceof Libro) {
+                        resultado.add(material);
+                    }
+                    break;
+                case "revista":
+                    if (material instanceof Revista) {
+                        resultado.add(material);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return resultado;
     }
 
     public ArrayList<Materiales> alquilados(){
