@@ -1,36 +1,63 @@
 {
   "materiales": {
     "1": {
-      "autor": "tori",
-      "numPaginas": 4312,
+      "autor": "Kentaro",
+      "numPaginas": 43124,
       "prestado": false,
       "id": 1,
-      "nombre": "berser",
-      "descripcion": "cosas edgy",
+      "nombre": "Berserk",
+      "descripcion": "Libro de edad media fantasia y horror",
       "type": "Libro"
     },
     "2": {
-      "autor": "akira",
-      "numPaginas": 1234,
+      "autor": "Cervantes",
+      "numPaginas": 3123,
       "prestado": false,
       "id": 2,
-      "nombre": "dragon boll",
-      "descripcion": "goku x veguetta",
+      "nombre": "Quijote",
+      "descripcion": "Español con la realidad alterada ",
       "type": "Libro"
     },
     "3": {
-      "editorial": "marca",
+      "autor": "Walter",
+      "numPaginas": 432143,
+      "prestado": false,
       "id": 3,
-      "nombre": "marca",
-      "descripcion": "cosas de marca",
-      "type": "Revista"
+      "nombre": "La guerra fria",
+      "descripcion": "La lucha entre capitalismo y comunismo",
+      "type": "Libro"
     },
     "4": {
-      "contenido": "Batman",
+      "autor": "Michael",
+      "numPaginas": 5412,
       "prestado": false,
       "id": 4,
-      "nombre": "Batman",
-      "descripcion": "el señor de la noche",
+      "nombre": "Jurassic Park",
+      "descripcion": "Que pasaria si se creara un parque de atraciones con dinosaurios",
+      "type": "Libro"
+    },
+    "5": {
+      "contenido": "Supuestamente musica",
+      "prestado": false,
+      "id": 5,
+      "nombre": "Albun BadBunny",
+      "descripcion": "Persona que no sabe cantar pero usa autotune",
+      "type": "DVD"
+    },
+    "6": {
+      "contenido": "Pelicula animada ",
+      "prestado": false,
+      "id": 6,
+      "nombre": "Shrek",
+      "descripcion": "La mejor obra de animacion",
+      "type": "DVD"
+    },
+    "7": {
+      "contenido": "Tutorial ",
+      "prestado": false,
+      "id": 7,
+      "nombre": "Tutorial de usar windows 10 ",
+      "descripcion": "Un tutorial para la gente que no sepa manejar Windows10",
       "type": "DVD"
     }
   }

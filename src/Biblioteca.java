@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,8 +12,8 @@ public class Biblioteca {
     //  Coleciones
     public ArrayList<Materiales> mostarBiblio(){
         ArrayList<Materiales> lista = new ArrayList<>();
-        for (Object entrada : materiales.values()){
-            lista.add((Materiales) entrada);
+        for (Materiales entrada : materiales.values()){
+            lista.add( entrada);
         }
         return lista;
     }
@@ -27,9 +28,28 @@ public class Biblioteca {
     }
 
     //Hacer metodo para buscar por type de material
+    public Materiales buscarTipo(){
 
+        return null;
+    }
 
-
+    public ArrayList<Materiales> alquilados(){
+        ArrayList<Materiales> lista = new ArrayList<>();
+        for (Materiales entrada: materiales.values()){
+            if (entrada instanceof Libro){
+                Libro libro =(Libro) entrada;
+                if (libro.getPrestado()){
+                    lista.add(entrada);
+                }
+            }else if (entrada instanceof DVD){
+                DVD dvd = (DVD) entrada;
+                if (dvd.getPrestado()){
+                    lista.add(entrada);
+                }
+            }
+        }
+        return lista;
+    }
 
     //  Parte del menu
     //  Añadir elemento
@@ -60,13 +80,6 @@ public class Biblioteca {
         }
         return null;
     }
-
-    //Buscar por tipo
-    public Materiales buscarTipo(){
-        return null;
-    }
-
-
 
     //  Eliminar un elemento
     public boolean eliminarMaterial(int id) {

@@ -68,7 +68,8 @@ public class Menu {
                     "\n\t4. Buscar un material" +
                     "\n\t5. Alquilar" +
                     "\n\t6. Devolver" +
-                    "\n\t7. Salir");
+                    "\n\t7. Alquilados" +
+                    "\n\t8. Salir");
 
             int seleccion = teclado.nextInt();
             teclado.nextLine();
@@ -195,6 +196,17 @@ public class Menu {
                     break;
 
                 case 7:
+                    System.out.println("Aqui estan todos los materiales alquilados");
+                    if (biblioteca.alquilados() == null){
+                        System.out.println("Actualmente no hay ningun material alquilado.");
+                    }else {
+                        for (Materiales entrada : biblioteca.alquilados()) {
+                            System.out.println(entrada.getDetalles());
+                        }
+                    }
+                    break;
+
+                case 8:
                     System.out.println("Saliendo del programa");
                     salir = true;
                     break;
