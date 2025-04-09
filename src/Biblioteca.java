@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.HashMap;
 
 public class Biblioteca {
@@ -142,23 +143,24 @@ public class Biblioteca {
         return false;
     }
 
-    public boolean devolver(int id){
+    public void devolver(int id) {
         for (Materiales entrada: materiales.values()){
             if (entrada.getId() == id){
                 if (entrada instanceof Libro){
                     Libro libro = (Libro) entrada;
                     if (libro.devuelto()){
-                        return true;
+                    }else {
+                        throw new IllegalArgumentException("No puedes devolver un libro que no esta prestado");
                     }
                 }else if (entrada instanceof DVD){
                     DVD dvd = (DVD) entrada;
                     if (dvd.devuelto()){
-                        return true;
+                    }else {
+                        throw new IllegalArgumentException("No puedes devolver un DVD que no esta prestado");
                     }
                 }
             }
         }
-        return false;
     }
 
 

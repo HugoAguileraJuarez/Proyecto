@@ -196,7 +196,7 @@ public class Menu {
                 case 6:
                     System.out.println("Ingrese la ID del material que deseas devolver:");
                     id = teclado.nextInt();
-                    System.out.println(biblioteca.devolver(id));
+                    biblioteca.devolver(id);
                     escribirJSON(biblioteca);
                     break;
 
@@ -223,7 +223,3 @@ public class Menu {
     }
 }
 
-// comprobar si se pueden añadir algo ya esta metido
-// mirar si me renta cambiar los valores de la biblioteca de manera que no devuelvan nada pero si hay un fallo usar el try chach
-// la opcion 4 de buscar por especifiacion los dos primeros petan y el tercero se la suda asi que tocara usar ahi el try cach entonces
-//
