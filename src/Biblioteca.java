@@ -19,6 +19,7 @@ public class Biblioteca {
         return lista;
     }
 
+    //Buscar por titulo
     public Materiales buscarTitulo(String titulo){
         for (Materiales entrada: materiales.values()){
             if (entrada.getNombre().toLowerCase().contains(titulo.toLowerCase())){
@@ -28,6 +29,7 @@ public class Biblioteca {
         return null;
     }
 
+    //Buscar por tipo
     public ArrayList<Materiales> buscarTipo(String nom){
         ArrayList<Materiales> resultado = new ArrayList<>();
         for (Materiales material : materiales.values()) {
@@ -54,6 +56,7 @@ public class Biblioteca {
         return resultado;
     }
 
+    //Enseñar los materiales alquilados
     public ArrayList<Materiales> alquilados(){
         ArrayList<Materiales> lista = new ArrayList<>();
         for (Materiales entrada: materiales.values()){
@@ -120,7 +123,7 @@ public class Biblioteca {
         return  false;
     }
 
-
+    //Alguilar un material de la biblioteca
     public void alquilar(int id){
         ArrayList<Materiales> lista = new ArrayList<>();
         for (Materiales entrada: materiales.values()){
@@ -144,6 +147,7 @@ public class Biblioteca {
         }
     }
 
+    //Devolver un material a la biblioteca
     public void devolver(int id) {
         for (Materiales entrada: materiales.values()){
             if (entrada.getId() == id){
@@ -163,10 +167,6 @@ public class Biblioteca {
             }
         }
     }
-
-
-
-
 }
 
 
