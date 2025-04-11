@@ -121,7 +121,7 @@ public class Biblioteca {
     }
 
 
-    public boolean alquilar(int id){
+    public void alquilar(int id){
         ArrayList<Materiales> lista = new ArrayList<>();
         for (Materiales entrada: materiales.values()){
             if ((entrada).getId() == id){
@@ -129,18 +129,19 @@ public class Biblioteca {
                     Libro libro = (Libro) entrada;
                     if (libro.alquilar()){
                         lista.add(libro);
-                        return true;
+                    }else {
+                    throw new IllegalArgumentException("No puedes alquilar un libro que esta prestado");
                     }
                 }else if (entrada instanceof DVD){
                     DVD dvd = (DVD) entrada;
                     if (dvd.alquilar()){
                         lista.add(dvd);
-                        return true;
+                    }else {
+                        throw new IllegalArgumentException("No puedes alquilar un libro que esta prestado");
                     }
                 }
             }
         }
-        return false;
     }
 
     public void devolver(int id) {

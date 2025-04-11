@@ -189,7 +189,6 @@ public class Menu {
                 case 5:
                     System.out.println("Ingrese la ID del material que deseas alquilar:");
                     id = teclado.nextInt();
-                    System.out.println(biblioteca.alquilar(id));
                     escribirJSON(biblioteca);
                     break;
 
