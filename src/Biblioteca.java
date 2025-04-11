@@ -137,7 +137,7 @@ public class Biblioteca {
                     if (dvd.alquilar()){
                         lista.add(dvd);
                     }else {
-                        throw new IllegalArgumentException("No puedes alquilar un libro que esta prestado");
+                        throw new IllegalArgumentException("No puedes alquilar un dvd que esta prestado");
                     }
                 }
             }
